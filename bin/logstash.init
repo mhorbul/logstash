@@ -19,9 +19,17 @@ LOGSTASH_HOME=/opt/logstash
 LOGSTASH_USER=logstash
 DAEMON=${LOGSTASH_HOME}/bin/logstash-wrapper
 
+# parse file name in order to get NAME and SERVICE
+# Example: /etc/init.d/logstash-agent
+# => NAME=logstash
+# => SERVICE=agent
 n=($(basename $0 | tr "-" " "))
 NAME=${n[0]}
 SERVICE=${n[1]}
+
+# default NAME & SERVICE values are logstash & agent accordingly
+NAME=${NAME:-logstash}
+SERVICE=${SERVICE:-agent}
 
 PID_FILE=${PIDFILE:-/var/run/${NAME}/${NAME}-${SERVICE}.pid}
 LOCK_FILE=${LOCKFILE:-/var/lock/subsys/${NAME}-${SERVICE}}
