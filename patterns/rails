@@ -1,0 +1,16 @@
+# date & time
+RAILS3_DATETIME %{DAY} %{MONTH} %{MONTHDAY} %{TIME} %{ISO8601_TIMEZONE} %{YEAR}
+RAILS2_DATETIME %{DATE_EU} %{HOUR}:%{MINUTE}:%{SECOND}
+
+RAILS_DB_TIME (ActiveRecord|DB): %{NUMBER:db_time:float}
+RAILS_SPHINX_TIME Sphinx: %{NUMBER:sphinx_time:float}
+RAILS_RENDER_TIME View[s]\{0,1\}: %{NUMBER:render_time:float}
+
+# rails2
+RAILS2_COMPLETED Completed in %{NUMBER:request_time:float}ms %{DATA} \| %{NUMBER:response_code} %{WORD} \[%{URI:url}\]
+RAILS2_PROCESSING Processing %{NOTSPACE:controller}#%{NOTSPACE:action} \(for %{IP:client} at %{RAILS2_DATETIME:timestamp}\) \[%{WORD:method}\]
+
+# rails3
+RAILS3_PROCESSING Processing by %{NOTSPACE:controller}#%{NOTSPACE:action} as %{NOTSPACE:content_type}
+RAILS3_COMPLETED Completed %{NUMBER:response_code} %{WORD} in %{NUMBER:request_time:float}ms
+RAILS3_STARTED Started %{WORD:method}%{DATA}%{URIPATHPARAM:url}%{DATA} for %{IP:client_ip} at %{RAILS3_DATETIME:timestamp}
